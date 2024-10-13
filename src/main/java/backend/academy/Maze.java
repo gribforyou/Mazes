@@ -1,10 +1,10 @@
 package backend.academy;
 
+import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 @Setter @Getter
 public class Maze {
@@ -24,8 +24,8 @@ public class Maze {
         this.startY = startY;
         this.endX = endX;
         this.endY = endY;
-        matrix[startX-1][startY-1] = Entity.Entrance;
-        matrix[endX-1][endY-1] = Entity.Exit;
+        matrix[startX - 1][startY - 1] = Entity.Entrance;
+        matrix[endX - 1][endY - 1] = Entity.Exit;
     }
 
     public Maze(int height, int width) {
@@ -37,38 +37,35 @@ public class Maze {
         generateEntities();
     }
 
-    public void generateEdges(MazeGenerator generator){
+    public void generateEdges(MazeGenerator generator) {
         edges = generator.generate(height, width);
     }
 
-    public void solve(MazeSolver solver){
+    public void solve(MazeSolver solver) {
         solution = solver.solve(this);
     }
 
-    public void showMaze(MazeRenderer renderer){
+    public void showMaze(MazeRenderer renderer) {
         renderer.render(this);
     }
 
-    public void showSolution(MazeRenderer renderer){
+    public void showSolution(MazeRenderer renderer) {
         renderer.renderSolution(this, solution);
     }
 
-    private void generateEntities(){
+    private void generateEntities() {
         Random rand  = new Random();
         int temp;
-        for(int i = 0; i < height; i++){
-            for(int j = 0; j < width; j++){
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 temp = rand.nextInt(100);
-                if(temp < 10){
+                if (temp < 10) {
                     matrix[i][j] = Entity.Coin;
-                }
-                else if(temp < 20){
+                } else if(temp < 20) {
                     matrix[i][j] = Entity.Sea;
-                }
-                else if(temp < 30){
+                } else if(temp < 30){
                     matrix[i][j] = Entity.Forest;
-                }
-                else{
+                } else {
                     matrix[i][j] = Entity.Default;
                 }
             }
