@@ -1,14 +1,13 @@
 package backend.academy;
 
 import lombok.experimental.UtilityClass;
-import java.util.ArrayList;
-import java.util.List;
 
 @UtilityClass
 public class Main {
     public static void main(String[] args) {
-        MazeRenderer mr = new ConsoleMazeRenderer();
-        Maze maze = new Maze(5, 5);
-        mr.render(maze);
+        MazeRenderer mazeRenderer = new ConsoleMazeRenderer();
+        Maze maze = new Maze(38, 13);
+        maze.generateEdges(new PrimMazeGenerator());
+        maze.showMaze(mazeRenderer);
     }
 }

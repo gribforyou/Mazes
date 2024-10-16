@@ -1,7 +1,7 @@
 package backend.academy;
 
-import java.util.List;
+import java.util.Set;
 
 public interface MazeGenerator {
-    List<Edge> generate(int height, int width);
+    Set<Edge> generate(int height, int width);
 }

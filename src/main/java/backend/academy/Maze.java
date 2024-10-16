@@ -1,8 +1,10 @@
 package backend.academy;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,34 +13,37 @@ public class Maze {
     private final int height;
     private final int width;
     private final Entity[][] matrix;
-    private List<Edge> edges;
+    private Set<Edge> edges;
     private List<Edge> solution;
-    private int startX;
-    private int startY;
-    private int endX;
+    private Vertex start;
+    private Vertex end;
     private int endY;
 
-    public Maze(int height, int width, int startX, int startY, int endX, int endY) {
+    public Maze(int width, int height, int startX, int startY, int endX, int endY) {
+        if (height < 2 || width < 2 || startX < 0 || startY < 0 || endX < 0 || endY < 0) {
+            throw new IllegalArgumentException("Not correct sizes or coordinates");
+        }
         this(height, width);
-        this.startX = startX;
-        this.startY = startY;
-        this.endX = endX;
-        this.endY = endY;
+        start = new Vertex(startX, startY);
+        end = new Vertex(endX, endY);
         matrix[startX - 1][startY - 1] = Entity.Entrance;
         matrix[endX - 1][endY - 1] = Entity.Exit;
     }
 
-    public Maze(int height, int width) {
+    public Maze(int width, int height) {
+        if (height < 2 || width < 2) {
+            throw new IllegalArgumentException("Not correct sizes or coordinates");
+        }
         this.height = height;
         this.width = width;
         solution = null;
-        edges = new ArrayList<>();
+        edges = new HashSet<>();
         matrix = new Entity[height][width];
         generateEntities();
     }
 
     public void generateEdges(MazeGenerator generator) {
-        edges = generator.generate(height, width);
+        edges = generator.generate(width, height);
     }
 
     public void solve(MazeSolver solver) {
@@ -54,20 +59,11 @@ public class Maze {
     }
 
     private void generateEntities() {
-        Random rand  = new Random();
+        Random rand = new Random();
         int temp;
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                temp = rand.nextInt(100);
-                if (temp < 10) {
-                    matrix[i][j] = Entity.Coin;
-                } else if(temp < 20) {
-                    matrix[i][j] = Entity.Sea;
-                } else if(temp < 30){
-                    matrix[i][j] = Entity.Forest;
-                } else {
-                    matrix[i][j] = Entity.Default;
-                }
+                matrix[i][j] = Entity.Default;
             }
         }
     }

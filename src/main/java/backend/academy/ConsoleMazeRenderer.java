@@ -13,7 +13,8 @@ public class ConsoleMazeRenderer implements MazeRenderer {
     private final String exitSprite = "2\uFE0F⃣";
     private final String pathSprite = "❎";
 
-    public ConsoleMazeRenderer() {}
+    public ConsoleMazeRenderer() {
+    }
 
     @Override
     public void render(Maze maze) {
@@ -28,26 +29,20 @@ public class ConsoleMazeRenderer implements MazeRenderer {
             for (int j = 0; j < y; j++) {
                 if (j == 0 || j == y - 1 || i == 0 || i == x - 1 || (i % 2) + (j % 2) == 0) {
                     System.out.print(wallSprite);
-                }
-                else if(j % 2 == 0) {
+                } else if (j % 2 == 0) {
                     if (maze.edges().contains(new Edge(j / 2 - 1, (i - 1) / 2, j / 2, (i - 1) / 2))) {
                         System.out.print(defaultSprite);
-                    }
-                    else {
+                    } else {
                         System.out.print(wallSprite);
                     }
-                }
-                else if(i % 2 == 0){
-                    if(maze.edges().contains(new Edge((j - 1) / 2, i / 2 - 1, (j - 1) / 2, i / 2 ) )) {
+                } else if (i % 2 == 0) {
+                    if (maze.edges().contains(new Edge((j - 1) / 2, i / 2 - 1, (j - 1) / 2, i / 2))) {
                         System.out.print(defaultSprite);
-                    }
-                    else {
+                    } else {
                         System.out.print(wallSprite);
                     }
-                }
-                else {
+                } else {
                     switch (maze.matrix()[(i - 1) / 2][(j - 1) / 2]) {
-                        case Default -> System.out.print(defaultSprite);
                         case Coin -> System.out.print(coinSprite);
                         case Forest -> System.out.print(forestSprite);
                         case Sea -> System.out.print(seaSprite);
