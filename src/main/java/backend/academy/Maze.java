@@ -1,12 +1,12 @@
 package backend.academy;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Random;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Setter @Getter
 public class Maze {
@@ -18,17 +18,6 @@ public class Maze {
     private Vertex start;
     private Vertex end;
     private int endY;
-
-    public Maze(int width, int height, int startX, int startY, int endX, int endY) {
-        if (height < 2 || width < 2 || startX < 0 || startY < 0 || endX < 0 || endY < 0) {
-            throw new IllegalArgumentException("Not correct sizes or coordinates");
-        }
-        this(height, width);
-        start = new Vertex(startX, startY);
-        end = new Vertex(endX, endY);
-        matrix[startX - 1][startY - 1] = Entity.Entrance;
-        matrix[endX - 1][endY - 1] = Entity.Exit;
-    }
 
     public Maze(int width, int height) {
         if (height < 2 || width < 2) {

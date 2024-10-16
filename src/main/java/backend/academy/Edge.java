@@ -23,22 +23,6 @@ public class Edge {
         }
     }
 
-    public Edge(int x1, int y1, int x2, int y2) {
-        if (x1 < 0 || y1 < 0 || x2 < 0 || y2 < 0) {
-            throw new IllegalArgumentException("Invalid coordinates!");
-        }
-        if (Math.abs(x1 - x2) + Math.abs(y1 - y2) != 1) {
-            throw new IllegalArgumentException("Invalid edge coordinates");
-        }
-        if (x1 < x2) {
-            v1 = new Vertex(x1, y1);
-            v2 = new Vertex(x2, y2);
-        } else {
-            v1 = new Vertex(x2, y2);
-            v2 = new Vertex(x1, y1);
-        }
-    }
-
     public boolean incidence(Vertex v) {
         return v1.equals(v) || v2.equals(v);
     }

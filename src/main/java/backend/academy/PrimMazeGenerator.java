@@ -1,11 +1,14 @@
 package backend.academy;
 
-import java.util.Set;
-import java.util.HashSet;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class PrimMazeGenerator implements MazeGenerator {
+
+    public PrimMazeGenerator() {
+    }
 
     @Override
     public Set<Edge> generate(int height, int width) {
@@ -15,7 +18,8 @@ public class PrimMazeGenerator implements MazeGenerator {
 
         Random rand = new Random();
         Set<Edge> edges = new HashSet<>();
-        Set<Vertex> first, second;
+        Set<Vertex> first;
+        Set<Vertex> second;
         first = new HashSet<>();
         second = new HashSet<>();
         Set<Edge> between = new HashSet<>();
@@ -30,12 +34,9 @@ public class PrimMazeGenerator implements MazeGenerator {
         }
         second.remove(new Vertex(0, 0));
 
-        Edge tempEdge;
-        Vertex tempV1, tempV2;
-
-        tempV1 = new Vertex(0, 0);
-        tempV2 = new Vertex(0, 1);
-        tempEdge = new Edge(tempV1, tempV2);
+        Vertex tempV1 = new Vertex(0, 0);
+        Vertex tempV2 = new Vertex(0, 1);
+        Edge tempEdge = new Edge(tempV1, tempV2);
         between.add(tempEdge);
 
         tempV2 = new Vertex(1, 0);
