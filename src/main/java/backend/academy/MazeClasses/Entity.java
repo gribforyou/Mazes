@@ -1,4 +1,4 @@
-package backend.academy;
+package backend.academy.MazeClasses;
 
 public enum Entity {
     Default,

@@ -1,5 +1,7 @@
-package backend.academy;
+package backend.academy.Generators;
 
+import backend.academy.MazeClasses.Edge;
+import backend.academy.MazeClasses.Vertex;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;

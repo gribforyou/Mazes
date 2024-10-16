@@ -1,4 +1,4 @@
-package backend.academy;
+package backend.academy.MazeClasses;
 
 import lombok.Getter;
 
@@ -23,5 +23,10 @@ public class Vertex {
             return x == v.x && y == v.y;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Vertex [x=" + x + ", y=" + y + "]";
     }
 }

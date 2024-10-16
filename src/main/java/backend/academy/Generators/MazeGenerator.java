@@ -1,5 +1,6 @@
-package backend.academy;
+package backend.academy.Generators;
 
+import backend.academy.MazeClasses.Edge;
 import java.util.Set;
 
 public interface MazeGenerator {
