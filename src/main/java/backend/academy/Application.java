@@ -1,6 +1,6 @@
 package backend.academy;
 
-import backend.academy.Generators.PrimMazeGenerator;
+import backend.academy.Generators.KrascalMazeGenerator;
 import backend.academy.MazeClasses.Maze;
 import backend.academy.MazeClasses.Vertex;
 import backend.academy.Renderers.ConsoleMazeRenderer;
@@ -21,7 +21,7 @@ public class Application {
         final int width = Integer.parseInt(prop.getProperty("demonstrationWidth"));
 
         Maze maze = new Maze(width, height);
-        maze.generateEdges(new PrimMazeGenerator());
+        maze.generateEdges(new KrascalMazeGenerator());
         maze.showMaze(new ConsoleMazeRenderer());
         maze.setEnd(new Vertex(0, 0));
         maze.setStart(new Vertex(width - 1, height - 1));

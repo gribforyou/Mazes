@@ -22,7 +22,7 @@ public class BFSMazeSolver implements MazeSolver {
         toVisit.add(new VertexWithPrevious(maze.start(), null));
 
         while (!toVisit.isEmpty()) {
-            VertexWithPrevious current = toVisit.remove();
+            VertexWithPrevious current = toVisit.poll();
             if (current.v.equals(maze.end())) {
                 return buildSolutionPath(edges, current);
             }
