@@ -1,4 +1,4 @@
-package backend.academy.Generators;
+package backend.academy.Generators.MazeGenerators;
 
 import backend.academy.MazeClasses.Edge;
 import backend.academy.MazeClasses.Vertex;
@@ -56,11 +56,7 @@ public class PrimMazeGenerator implements MazeGenerator {
             second.remove(tempV2);
             edges.add(tempEdge);
 
-            neighbours = new HashSet<>();
-            neighbours.add(new Vertex(tempV2.x() + 1, tempV2.y()));
-            neighbours.add(new Vertex(tempV2.x() - 1, tempV2.y()));
-            neighbours.add(new Vertex(tempV2.x(), tempV2.y() + 1));
-            neighbours.add(new Vertex(tempV2.x(), tempV2.y() - 1));
+            neighbours = tempV2.getNeighbors();
 
             for (Vertex vertex : neighbours) {
                 between.remove(new Edge(tempV2, vertex));

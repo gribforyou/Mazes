@@ -1,6 +1,7 @@
 package backend.academy.MazeClasses;
 
-import backend.academy.Generators.MazeGenerator;
+import backend.academy.Generators.EntityGenerators.EntityGenerator;
+import backend.academy.Generators.MazeGenerators.MazeGenerator;
 import backend.academy.Renderers.MazeRenderer;
 import backend.academy.Solvers.MazeSolver;
 import java.util.HashSet;
@@ -11,7 +12,7 @@ import lombok.Getter;
 public class Maze {
     private final int height;
     private final int width;
-    private final Entity[][] matrix;
+    private Entity[][] matrix;
     private Set<Edge> edges;
     private Set<Edge> solution;
     private Vertex start;
@@ -27,7 +28,11 @@ public class Maze {
         solution = null;
         edges = new HashSet<>();
         matrix = new Entity[height][width];
-        generateEntities();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                matrix[i][j] = Entity.Default;
+            }
+        }
         isSolved = false;
     }
 
@@ -59,6 +64,10 @@ public class Maze {
         edges = generator.generate(width, height);
     }
 
+    private void generateEntities(EntityGenerator generator) {
+        matrix = generator.generate(height, width);
+    }
+
     public void solve(MazeSolver solver) {
         solution = solver.solve(this);
         isSolved = true;
@@ -73,13 +82,5 @@ public class Maze {
             throw new IllegalStateException("Maze has not been solved with these start and end ceils");
         }
         renderer.render(this, true);
-    }
-
-    private void generateEntities() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                matrix[i][j] = Entity.Default;
-            }
-        }
     }
 }

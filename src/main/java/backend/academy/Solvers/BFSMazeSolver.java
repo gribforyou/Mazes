@@ -18,6 +18,7 @@ public class BFSMazeSolver implements MazeSolver {
         Queue<VertexWithPrevious> toVisit = new LinkedList<>();
         Set<Vertex> visited = new HashSet<>(maze.width() * maze.height());
         Set<Edge> edges = new HashSet<>(maze.width() * maze.height() * 2);
+        Set<Vertex> neighbours;
 
         toVisit.add(new VertexWithPrevious(maze.start(), null));
         visited.add(maze.start());
@@ -27,8 +28,8 @@ public class BFSMazeSolver implements MazeSolver {
             if (current.v.equals(maze.end())) {
                 return buildSolutionPath(edges, current);
             }
-
-            for (Vertex neighbour : getNeighbours(current.v)) {
+            neighbours = current.v.getNeighbors();
+            for (Vertex neighbour : neighbours) {
                 Edge edge = new Edge(neighbour, current.v);
                 if (maze.edges().contains(edge) && !visited.contains(neighbour)) {
                     toVisit.add(new VertexWithPrevious(neighbour, current));

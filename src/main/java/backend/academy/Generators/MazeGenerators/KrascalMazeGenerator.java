@@ -1,4 +1,4 @@
-package backend.academy.Generators;
+package backend.academy.Generators.MazeGenerators;
 
 import backend.academy.MazeClasses.Edge;
 import backend.academy.MazeClasses.Vertex;

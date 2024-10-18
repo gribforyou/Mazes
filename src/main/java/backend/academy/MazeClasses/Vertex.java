@@ -1,5 +1,7 @@
 package backend.academy.MazeClasses;
 
+import java.util.HashSet;
+import java.util.Set;
 import lombok.Getter;
 
 @Getter
@@ -10,6 +12,15 @@ public class Vertex {
     public Vertex(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Set<Vertex> getNeighbors() {
+        Set<Vertex> neighbors = new HashSet<>();
+        neighbors.add(new Vertex(x - 1, y));
+        neighbors.add(new Vertex(x + 1, y));
+        neighbors.add(new Vertex(x, y - 1));
+        neighbors.add(new Vertex(x, y + 1));
+        return neighbors;
     }
 
     @Override
