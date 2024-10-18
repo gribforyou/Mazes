@@ -4,6 +4,12 @@ import backend.academy.MazeClasses.Edge;
 import backend.academy.MazeClasses.Maze;
 import java.util.Set;
 
-public interface MazeSolver {
-    Set<Edge> solve(Maze maze);
+public abstract class MazeSolver {
+    public abstract Set<Edge> solve(Maze maze);
+
+    protected void validateMaze(Maze maze) {
+        if (maze == null || maze.edges().isEmpty() || maze.end() == null || maze.start() == null) {
+            throw new IllegalArgumentException("Maze params are not correct!");
+        }
+    }
 }

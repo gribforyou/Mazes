@@ -9,7 +9,7 @@ import java.util.Queue;
 import java.util.Set;
 
 
-public class BFSMazeSolver implements MazeSolver {
+public class BFSMazeSolver extends MazeSolver {
 
     @Override
     public Set<Edge> solve(Maze maze) {
@@ -38,12 +38,6 @@ public class BFSMazeSolver implements MazeSolver {
             }
         }
         return null;
-    }
-
-    private void validateMaze(Maze maze) {
-        if (maze == null || maze.edges().isEmpty() || maze.end() == null || maze.start() == null) {
-            throw new IllegalArgumentException("Maze params are not correct!");
-        }
     }
 
     private Set<Vertex> getNeighbours(Vertex v) {

@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 
-public class DijkstraMazeSolver implements MazeSolver {
+public class DijkstraMazeSolver extends MazeSolver {
     private final int defaultPrice = 1;
     private final int coinPrice = 0;
     private final int forestPrice = 2;
@@ -50,12 +50,6 @@ public class DijkstraMazeSolver implements MazeSolver {
             }
         }
         return Collections.emptySet();
-    }
-
-    private void validateMaze(Maze maze) {
-        if (maze == null || maze.edges().isEmpty() || maze.end() == null || maze.start() == null) {
-            throw new IllegalArgumentException("Maze params are not correct!");
-        }
     }
 
     private Set<Edge> buildPath(DijkstraVertex end) {
