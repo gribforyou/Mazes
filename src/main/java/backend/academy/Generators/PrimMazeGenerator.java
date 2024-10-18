@@ -19,12 +19,10 @@ public class PrimMazeGenerator implements MazeGenerator {
         }
 
         Random rand = new Random();
-        Set<Edge> edges = new HashSet<>();
-        Set<Vertex> first;
-        Set<Vertex> second;
-        first = new HashSet<>();
-        second = new HashSet<>();
-        Set<Edge> between = new HashSet<>();
+        Set<Edge> edges = new HashSet<>(height * width * 2);
+        Set<Vertex> first = new HashSet<>(height * width);
+        Set<Vertex> second = new HashSet<>(height * width);
+        Set<Edge> between = new HashSet<>(height * width - 1);
         Set<Vertex> neighbours;
 
         first.add(new Vertex(0, 0));

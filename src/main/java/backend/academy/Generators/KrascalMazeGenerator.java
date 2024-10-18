@@ -18,7 +18,7 @@ public class KrascalMazeGenerator implements MazeGenerator {
             throw new IllegalArgumentException("Invalid height or width");
         }
 
-        List<Edge> edges = new ArrayList<>();
+        List<Edge> edges = new ArrayList<>(2 * height * width);
         for (int i = 1; i < height; i++) {
             for (int j = 1; j < width; j++) {
                 edges.add(new Edge(new Vertex(j, i), new Vertex(j, i - 1)));
@@ -33,7 +33,7 @@ public class KrascalMazeGenerator implements MazeGenerator {
         }
 
         Collections.shuffle(edges);
-        Set<Edge> result = new HashSet<>();
+        Set<Edge> result = new HashSet<>(width * height - 1);
         List<Set<Vertex>> components = new ArrayList<>();
         Vertex v1;
         Vertex v2;
