@@ -1,9 +1,11 @@
 package backend.academy;
 
 import backend.academy.Generators.MazeGenerators.KrascalMazeGenerator;
+import backend.academy.Generators.MazeGenerators.KrascalWithExtraEdges;
 import backend.academy.MazeClasses.Maze;
 import backend.academy.MazeClasses.Vertex;
 import backend.academy.Renderers.ConsoleMazeRenderer;
+import backend.academy.Solvers.AStarMazeSolver;
 import backend.academy.Solvers.DijkstraMazeSolver;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,10 +24,12 @@ public class Application {
 
         Maze maze = new Maze(width, height);
         maze.generateEdges(new KrascalMazeGenerator());
+        maze.generateEdges(new KrascalWithExtraEdges());
         maze.showMaze(new ConsoleMazeRenderer());
         maze.setStart(new Vertex(0, 0));
         maze.setEnd(new Vertex(width - 1, height - 1));
         maze.solve(new DijkstraMazeSolver());
+        maze.solve(new AStarMazeSolver());
         maze.showSolution(new ConsoleMazeRenderer());
     }
 }

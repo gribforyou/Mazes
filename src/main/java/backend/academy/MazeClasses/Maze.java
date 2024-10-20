@@ -5,6 +5,7 @@ import backend.academy.Generators.MazeGenerators.MazeGenerator;
 import backend.academy.Renderers.MazeRenderer;
 import backend.academy.Solvers.MazeSolver;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import lombok.Getter;
 
@@ -28,11 +29,33 @@ public class Maze {
         solution = null;
         edges = new HashSet<>();
         matrix = new Entity[height][width];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                matrix[i][j] = Entity.Default;
+        generateEntities(new EntityGenerator() {
+            private final int coinProbability = 5;
+            private final int forestProbability = 17;
+            private final int seaProbability = 7;
+            private final Random random = new Random();
+
+            @Override
+            public Entity[][] generate(int height, int width) {
+                Entity[][] entities = new Entity[height][width];
+                int temp;
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {         //CHECKSTYLE:OFF
+                        temp = random.nextInt(100);     //CHECKSTYLE:ON
+                        if (temp < coinProbability) {
+                            entities[i][j] = Entity.Coin;
+                        } else if (temp < forestProbability + coinProbability) {
+                            entities[i][j] = Entity.Forest;
+                        } else if (temp < seaProbability + forestProbability + coinProbability) {
+                            entities[i][j] = Entity.Sea;
+                        } else {
+                            entities[i][j] = Entity.Default;
+                        }
+                    }
+                }
+                return entities;
             }
-        }
+        });
         isSolved = false;
     }
 
