@@ -55,12 +55,18 @@ public abstract class IdealGeneratorTest {
         "8, 7"
     })
     public void testConnectivity(int width, int height) {
+        //Given
         Set<Vertex> vertices = new HashSet<>();
-        Set<Edge> edges = generator.generate(height, width);
+        Set<Edge> edges;
+
+        //When
+        edges = generator.generate(height, width);
         for (Edge edge : edges) {
             vertices.add(edge.v1());
             vertices.add(edge.v2());
         }
+
+        //Then
         assertEquals(vertices.size(), height * width);
     }
 }

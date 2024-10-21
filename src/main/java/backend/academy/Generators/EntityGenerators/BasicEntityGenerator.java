@@ -8,7 +8,11 @@ public class BasicEntityGenerator implements EntityGenerator {
     private final int forestProbability = 6;
     private final int seaProbability = 7;
     private final int maxProbability = 100;
-    private final Random rand = new Random();
+    private final Random rand;
+
+    public BasicEntityGenerator() {
+        rand = new Random();
+    }
 
     @Override
     public Entity[][] generate(int height, int width) {

@@ -11,6 +11,9 @@ import java.util.Set;
 public class KrascalWithExtraEdges implements MazeGenerator {
     @Override
     public Set<Edge> generate(int width, int height) {
+        if (height < 2 || width < 2) {
+            throw new IllegalArgumentException("Invalid height or width");
+        }
         KrascalMazeGenerator generator = new KrascalMazeGenerator();
         Set<Edge> edges = generator.generate(width, height);
         List<Edge> full = new ArrayList<>();

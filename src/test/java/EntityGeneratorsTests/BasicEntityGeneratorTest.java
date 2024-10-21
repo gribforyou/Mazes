@@ -34,7 +34,10 @@ public class BasicEntityGeneratorTest {
         "100, 150"
     })
     void testNotNull(int height, int width){
+        //When
         Entity[][] entities = entityGenerator.generate(height, width);
+
+        //Then
         assertNotNull(entities);
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
