@@ -1,5 +1,6 @@
 package backend.academy;
 
+import backend.academy.Generators.EntityGenerators.BasicEntityGenerator;
 import backend.academy.Generators.MazeGenerators.KrascalMazeGenerator;
 import backend.academy.Generators.MazeGenerators.KrascalWithExtraEdges;
 import backend.academy.MazeClasses.Maze;
@@ -23,6 +24,7 @@ public class Application {
         final int width = Integer.parseInt(prop.getProperty("demonstrationWidth"));
 
         Maze maze = new Maze(width, height);
+        maze.generateEntities(new BasicEntityGenerator());
         maze.generateEdges(new KrascalMazeGenerator());
         maze.generateEdges(new KrascalWithExtraEdges());
         maze.showMaze(new ConsoleMazeRenderer());
