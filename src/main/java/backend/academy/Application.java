@@ -21,7 +21,7 @@ public class Application {
     private final int maxSize = 100;
 
     public static void main(String[] args) throws IOException {
-        int width = getNum(2, mazSize, "Width");
+        int width = getNum(2, maxSize, "Width");
         int height = getNum(2, maxSize, "Height");
         int startX = getNum(0, width - 1, "Start X");
         int startY = getNum(0, height - 1, "Start Y");
