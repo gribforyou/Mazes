@@ -22,7 +22,8 @@ public class DijkstraMazeSolver extends MazeSolver {
     protected int defaultPrice = DEFAULT_FIELD_PRICE;
     protected int coinPrice = DEFAULT_COIN_PRICE;
     protected int forestPrice = DEFAULT_FOREST_PRICE;
-    protected int seaPrice = DEFAULT_SEA_PRICE;
+    protected int seaPrice = DEFAULT_SEA_PRICE
+        ;
 
     public DijkstraMazeSolver() {
     }
