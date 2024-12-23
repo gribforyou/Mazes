@@ -1,10 +1,10 @@
 package backend.academy.MazeClasses;
 
 public enum Entity {
-    Default,
-    Coin,
-    Sea,
-    Forest,
-    Entrance,
-    Exit
+    DEFAULT,
+    COIN,
+    SEA,
+    FOREST,
+    ENTRANCE,
+    EXIT
 }

@@ -100,23 +100,23 @@ public class ConsoleMazeRenderer implements MazeRenderer {
     private void printCellContent(Maze maze, boolean showSolution, int y, int x) {
         if (showSolution) {
             if (pathVertices.contains(new Vertex((x - 1) / 2, (y - 1) / 2))
-                && maze.matrix()[(y - 1) / 2][(x - 1) / 2] == Entity.Default) {
+                && maze.matrix()[(y - 1) / 2][(x - 1) / 2] == Entity.DEFAULT) {
                 out.print(pathSprite);
             } else {
                 switch (maze.matrix()[(y - 1) / 2][(x - 1) / 2]) {
-                    case Exit -> out.print(exitSprite);
-                    case Entrance -> out.print(entranceSprite);
-                    case Coin -> out.print(coinSprite);
-                    case Forest -> out.print(forestSprite);
-                    case Sea -> out.print(seaSprite);
+                    case EXIT -> out.print(exitSprite);
+                    case ENTRANCE -> out.print(entranceSprite);
+                    case COIN -> out.print(coinSprite);
+                    case FOREST -> out.print(forestSprite);
+                    case SEA -> out.print(seaSprite);
                     default -> out.print(defaultSprite);
                 }
             }
         } else {
             switch (maze.matrix()[(y - 1) / 2][(x - 1) / 2]) {
-                case Coin -> out.print(coinSprite);
-                case Forest -> out.print(forestSprite);
-                case Sea -> out.print(seaSprite);
+                case COIN -> out.print(coinSprite);
+                case FOREST -> out.print(forestSprite);
+                case SEA -> out.print(seaSprite);
                 default -> out.print(defaultSprite);
             }
         }

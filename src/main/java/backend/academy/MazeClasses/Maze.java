@@ -35,7 +35,7 @@ public class Maze {
                 int temp;
                 for (int i = 0; i < height; i++) {
                     for (int j = 0; j < width; j++) {
-                        entities[i][j] = Entity.Default;
+                        entities[i][j] = Entity.DEFAULT;
                     }
                 }
                 return entities;
@@ -49,9 +49,9 @@ public class Maze {
             throw new IllegalArgumentException("Not correct coordinates of start ceil!");
         }
         if (start != null) {
-            matrix[start.y()][start.x()] = Entity.Default;
+            matrix[start.y()][start.x()] = Entity.DEFAULT;
         }
-        matrix[v.y()][v.x()] = Entity.Entrance;
+        matrix[v.y()][v.x()] = Entity.ENTRANCE;
         this.start = v;
         isSolved = false;
     }
@@ -61,15 +61,15 @@ public class Maze {
             throw new IllegalArgumentException("Not correct coordinates of end ceil!");
         }
         if (end != null) {
-            matrix[end.y()][end.x()] = Entity.Default;
+            matrix[end.y()][end.x()] = Entity.DEFAULT;
         }
-        matrix[v.y()][v.x()] = Entity.Exit;
+        matrix[v.y()][v.x()] = Entity.EXIT;
         this.end = v;
         isSolved = false;
     }
 
     public void generateEdges(MazeGenerator generator) {
-        edges = generator.generate(width, height);
+        edges = generator.generate(height, width);
     }
 
     public void generateEntities(EntityGenerator generator) {

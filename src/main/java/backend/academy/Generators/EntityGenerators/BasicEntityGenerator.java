@@ -23,13 +23,13 @@ public class BasicEntityGenerator implements EntityGenerator {
             for (int x = 0; x < width; x++) {
                 temp = rand.nextInt(maxProbability);
                 if (temp <= coinProbability) {
-                    entities[y][x] = Entity.Coin;
+                    entities[y][x] = Entity.COIN;
                 } else if (temp <= forestProbability + coinProbability) {
-                    entities[y][x] = Entity.Forest;
+                    entities[y][x] = Entity.FOREST;
                 } else if (temp <= seaProbability + forestProbability + coinProbability) {
-                    entities[y][x] = Entity.Sea;
+                    entities[y][x] = Entity.SEA;
                 } else {
-                    entities[y][x] = Entity.Default;
+                    entities[y][x] = Entity.DEFAULT;
                 }
             }
         }

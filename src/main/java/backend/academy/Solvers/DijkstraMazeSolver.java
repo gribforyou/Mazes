@@ -14,12 +14,15 @@ import java.util.Set;
 public class DijkstraMazeSolver extends MazeSolver {
     protected Vertex endVertex;
 
-    //CHECKSTYLE:OFF
-    protected int defaultPrice = 1;
-    protected int coinPrice = 0;
-    protected int forestPrice = 3;
-    protected int seaPrice = 4;
-    //CHECKSTYLE:ON
+    private final static int DEFAULT_FIELD_PRICE = 1;
+    private final static int DEFAULT_COIN_PRICE = 0;
+    private final static int DEFAULT_FOREST_PRICE = 3;
+    private final static int DEFAULT_SEA_PRICE = 4;
+
+    protected int defaultPrice = DEFAULT_FIELD_PRICE;
+    protected int coinPrice = DEFAULT_COIN_PRICE;
+    protected int forestPrice = DEFAULT_FOREST_PRICE;
+    protected int seaPrice = DEFAULT_SEA_PRICE;
 
     public DijkstraMazeSolver() {
     }
@@ -38,7 +41,7 @@ public class DijkstraMazeSolver extends MazeSolver {
         Queue<VertexWithPrevAndWeight> toVisit = new PriorityQueue<>(Comparator.comparingLong(o -> o.priority));
         Set<Vertex> visited = new HashSet<>(maze.width() * maze.height());
         Set<Vertex> neighbours;
-        toVisit.add(new VertexWithPrevAndWeight(maze.start(), null, maze.height() + maze.height()));
+        toVisit.add(new VertexWithPrevAndWeight(maze.start(), null, maze.width() + maze.height()));
         VertexWithPrevAndWeight current = null;
 
         while (!toVisit.isEmpty()) {
@@ -74,15 +77,15 @@ public class DijkstraMazeSolver extends MazeSolver {
     protected long priority(VertexWithPrevAndWeight v1, Entity[][] matrix) {
         long step;
         switch (matrix[v1.v.y()][v1.v.x()]) {
-            case Coin -> step = coinPrice;
-            case Forest -> step = forestPrice;
-            case Sea -> step = seaPrice;
+            case COIN -> step = coinPrice;
+            case FOREST -> step = forestPrice;
+            case SEA -> step = seaPrice;
             default -> step = defaultPrice;
         }
         return v1.priority + step;
     }
 
-    protected class VertexWithPrevAndWeight {
+    protected static class VertexWithPrevAndWeight {
         final Vertex v;
         VertexWithPrevAndWeight prev;
         long priority;

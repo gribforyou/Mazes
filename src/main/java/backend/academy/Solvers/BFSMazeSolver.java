@@ -40,15 +40,6 @@ public class BFSMazeSolver extends MazeSolver {
         return null;
     }
 
-    private Set<Vertex> getNeighbours(Vertex v) {
-        Set<Vertex> neighbours = new HashSet<>();
-        neighbours.add(new Vertex(v.x(), v.y() - 1));
-        neighbours.add(new Vertex(v.x(), v.y() + 1));
-        neighbours.add(new Vertex(v.x() - 1, v.y()));
-        neighbours.add(new Vertex(v.x() + 1, v.y()));
-        return neighbours;
-    }
-
     private Set<Edge> buildSolutionPath(Set<Edge> edges, VertexWithPrevious current) {
         VertexWithPrevious currentCopy = current;
         while (currentCopy.previous != null) {
@@ -58,7 +49,7 @@ public class BFSMazeSolver extends MazeSolver {
         return edges;
     }
 
-    private class VertexWithPrevious {
+    private static class VertexWithPrevious {
         private final Vertex v;
         private final VertexWithPrevious previous;
 

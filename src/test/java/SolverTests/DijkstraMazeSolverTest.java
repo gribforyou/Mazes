@@ -24,9 +24,9 @@ public class DijkstraMazeSolverTest extends BasicSolverTest {
         Maze maze = new Maze(3, 3);
         maze.setStart(new Vertex(0, 0));
         maze.setEnd(new Vertex(2, 2));
-        maze.matrix()[0][2] = Entity.Coin;
-        maze.matrix()[1][1] = Entity.Forest;
-        maze.matrix()[2][0] = Entity.Sea;
+        maze.matrix()[0][2] = Entity.COIN;
+        maze.matrix()[1][1] = Entity.FOREST;
+        maze.matrix()[2][0] = Entity.SEA;
         maze.edges().add(new Edge(new Vertex(0, 0), new Vertex(1, 0)));
         maze.edges().add(new Edge(new Vertex(0, 0), new Vertex(0, 1)));
         maze.edges().add(new Edge(new Vertex(1, 0), new Vertex(1, 1)));
@@ -60,8 +60,8 @@ public class DijkstraMazeSolverTest extends BasicSolverTest {
         Maze maze = new Maze(4, 4);
         maze.setStart(new Vertex(0, 0));
         maze.setEnd(new Vertex(3, 3));
-        maze.matrix()[2][1] = Entity.Coin;
-        maze.matrix()[2][3] = Entity.Forest;
+        maze.matrix()[2][1] = Entity.COIN;
+        maze.matrix()[2][3] = Entity.FOREST;
         maze.edges().add(new Edge(new Vertex(0, 0), new Vertex(1, 0)));
         maze.edges().add(new Edge(new Vertex(1, 0), new Vertex(2, 0)));
         maze.edges().add(new Edge(new Vertex(2, 0), new Vertex(3, 0)));
@@ -97,9 +97,9 @@ public class DijkstraMazeSolverTest extends BasicSolverTest {
         Maze maze = new Maze(4, 4);
         maze.setStart(new Vertex(0, 0));
         maze.setEnd(new Vertex(3, 3));
-        maze.matrix()[2][1] = Entity.Coin;
-        maze.matrix()[2][3] = Entity.Forest;
-        maze.matrix()[1][0] = Entity.Sea;
+        maze.matrix()[2][1] = Entity.COIN;
+        maze.matrix()[2][3] = Entity.FOREST;
+        maze.matrix()[1][0] = Entity.SEA;
         maze.edges().add(new Edge(new Vertex(0, 0), new Vertex(1, 0)));
         maze.edges().add(new Edge(new Vertex(1, 0), new Vertex(2, 0)));
         maze.edges().add(new Edge(new Vertex(2, 0), new Vertex(3, 0)));
